@@ -109,13 +109,15 @@ extras = {}
 
 print("Argument list = ", str(sys.argv))
 
-if "--cpp_ext" in sys.argv or "--cuda_ext" in sys.argv:
+#if "--cpp_ext" in sys.argv or "--cuda_ext" in sys.argv:
+if True:
     if TORCH_MAJOR == 0:
         raise RuntimeError(
             "--cpp_ext requires Pytorch 1.0 or later, " "found torch.__version__ = {}".format(torch.__version__)
         )
 
-if "--cpp_ext" in sys.argv:
+#if "--cpp_ext" in sys.argv:
+if True:
     sys.argv.remove("--cpp_ext")
     ext_modules.append(CppExtension("apex_C", ["csrc/flatten_unflatten.cpp"]))
 else:
@@ -143,7 +145,8 @@ version_dependent_macros = version_ge_1_1 + version_ge_1_3 + version_ge_1_5
 
 _, bare_metal_version = get_cuda_bare_metal_version(CUDA_HOME)
 
-if "--distributed_adam" in sys.argv:
+#if "--distributed_adam" in sys.argv:
+if True:
     sys.argv.remove("--distributed_adam")
     raise_if_cuda_home_none("--distributed_adam")
     ext_modules.append(
@@ -161,7 +164,8 @@ if "--distributed_adam" in sys.argv:
         )
     )
 
-if "--distributed_lamb" in sys.argv:
+#if "--distributed_lamb" in sys.argv:
+if True:
     sys.argv.remove("--distributed_lamb")
     raise_if_cuda_home_none("--distributed_lamb")
     ext_modules.append(
@@ -179,7 +183,8 @@ if "--distributed_lamb" in sys.argv:
         )
     )
 
-if "--cuda_ext" in sys.argv:
+#if "--cuda_ext" in sys.argv:
+if True:
     sys.argv.remove("--cuda_ext")
     raise_if_cuda_home_none("--cuda_ext")
     check_cuda_torch_binary_vs_bare_metal(CUDA_HOME)
@@ -394,7 +399,8 @@ if "--cuda_ext" in sys.argv:
             )
         )
 
-if "--permutation_search" in sys.argv:
+#if "--permutation_search" in sys.argv:
+if True:
     sys.argv.remove("--permutation_search")
 
     if CUDA_HOME is None:
@@ -408,7 +414,8 @@ if "--permutation_search" in sys.argv:
                           extra_compile_args={'cxx': ['-O3'] + version_dependent_macros,
                                               'nvcc':['-O3'] + version_dependent_macros + cc_flag}))
 
-if "--bnp" in sys.argv:
+#if "--bnp" in sys.argv:
+if True:
     sys.argv.remove("--bnp")
     raise_if_cuda_home_none("--bnp")
     ext_modules.append(
@@ -433,7 +440,8 @@ if "--bnp" in sys.argv:
         )
     )
 
-if "--xentropy" in sys.argv:
+#if "--xentropy" in sys.argv:
+if True:
     from datetime import datetime
     sys.argv.remove("--xentropy")
     raise_if_cuda_home_none("--xentropy")
@@ -451,7 +459,8 @@ if "--xentropy" in sys.argv:
         )
     )
 
-if "--focal_loss" in sys.argv:
+#if "--focal_loss" in sys.argv:
+if True:
     sys.argv.remove("--focal_loss")
     raise_if_cuda_home_none("--focal_loss")
     ext_modules.append(
@@ -469,7 +478,8 @@ if "--focal_loss" in sys.argv:
         )
     )
 
-if "--group_norm" in sys.argv:
+#if "--group_norm" in sys.argv:
+if True:
     sys.argv.remove("--group_norm")
     raise_if_cuda_home_none("--group_norm")
 
@@ -497,7 +507,8 @@ if "--group_norm" in sys.argv:
         )
     )
 
-if "--index_mul_2d" in sys.argv:
+#if "--index_mul_2d" in sys.argv:
+if True:
     sys.argv.remove("--index_mul_2d")
     raise_if_cuda_home_none("--index_mul_2d")
     ext_modules.append(
@@ -559,7 +570,8 @@ torch_dir = torch.__path__[0]
 if os.path.exists(os.path.join(torch_dir, "include", "ATen", "CUDAGeneratorImpl.h")):
     generator_flag = ["-DOLD_GENERATOR_PATH"]
 
-if "--fast_layer_norm" in sys.argv:
+#if "--fast_layer_norm" in sys.argv:
+if True:
     sys.argv.remove("--fast_layer_norm")
     raise_if_cuda_home_none("--fast_layer_norm")
 
@@ -602,7 +614,8 @@ if "--fast_layer_norm" in sys.argv:
         )
     )
 
-if "--fmha" in sys.argv:
+#if "--fmha" in sys.argv:
+if True:
     sys.argv.remove("--fmha")
     raise_if_cuda_home_none("--fmha")
 
@@ -651,7 +664,8 @@ if "--fmha" in sys.argv:
     )
 
 
-if "--fast_multihead_attn" in sys.argv:
+#if "--fast_multihead_attn" in sys.argv:
+if True:
     sys.argv.remove("--fast_multihead_attn")
     raise_if_cuda_home_none("--fast_multihead_attn")
 
@@ -705,7 +719,8 @@ if "--fast_multihead_attn" in sys.argv:
         )
     )
 
-if "--transducer" in sys.argv:
+#if "--transducer" in sys.argv:
+if True:
     sys.argv.remove("--transducer")
     raise_if_cuda_home_none("--transducer")
     ext_modules.append(
@@ -737,7 +752,8 @@ if "--transducer" in sys.argv:
         )
     )
 
-if "--cudnn_gbn" in sys.argv:
+#if "--cudnn_gbn" in sys.argv:
+if True:
     sys.argv.remove("--cudnn_gbn")
     raise_if_cuda_home_none("--cudnn_gbn")
     if check_cudnn_version_and_warn("--cudnn_gbn", 8500):
@@ -754,7 +770,8 @@ if "--cudnn_gbn" in sys.argv:
             )
         )
 
-if "--peer_memory" in sys.argv:
+#if "--peer_memory" in sys.argv:
+if True:
     sys.argv.remove("--peer_memory")
     raise_if_cuda_home_none("--peer_memory")
     ext_modules.append(
@@ -769,7 +786,8 @@ if "--peer_memory" in sys.argv:
     )
 
 # NOTE: Requires NCCL >= 2.10.3
-if "--nccl_p2p" in sys.argv:
+#if "--nccl_p2p" in sys.argv:
+if True:
     sys.argv.remove("--nccl_p2p")
     raise_if_cuda_home_none("--nccl_p2p")
     # Check NCCL version.
@@ -796,7 +814,8 @@ if "--nccl_p2p" in sys.argv:
         )
 
 # note (mkozuki): Now `--fast_bottleneck` option (i.e. apex/contrib/bottleneck) depends on `--peer_memory` and `--nccl_p2p`.
-if "--fast_bottleneck" in sys.argv:
+#if "--fast_bottleneck" in sys.argv:
+if True:
     sys.argv.remove("--fast_bottleneck")
     raise_if_cuda_home_none("--fast_bottleneck")
     if check_cudnn_version_and_warn("--fast_bottleneck", 8400):
@@ -811,7 +830,8 @@ if "--fast_bottleneck" in sys.argv:
         )
 
 
-if "--fused_conv_bias_relu" in sys.argv:
+#if "--fused_conv_bias_relu" in sys.argv:
+if True:
     sys.argv.remove("--fused_conv_bias_relu")
     raise_if_cuda_home_none("--fused_conv_bias_relu")
     if check_cudnn_version_and_warn("--fused_conv_bias_relu", 8400):
@@ -826,7 +846,8 @@ if "--fused_conv_bias_relu" in sys.argv:
         )
 
 
-if "--gpu_direct_storage" in sys.argv:
+#if "--gpu_direct_storage" in sys.argv:
+if True:
     sys.argv.remove("--gpu_direct_storage")
     raise_if_cuda_home_none("--gpu_direct_storage")
     ext_modules.append(
