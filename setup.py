@@ -120,7 +120,7 @@ if True:
 if True:
     #sys.argv.remove("--cpp_ext")
     ext_modules.append(
-        CppExtension("apex_C", ["csrc/flatten_unflatten.cpp"], include_dirs="/user-environment/env/default/include"))
+        CppExtension("apex_C", ["csrc/flatten_unflatten.cpp"], include_dirs=["/user-environment/env/default/include"]))
 else:
     raise RuntimeError(
         "--cpp_ext is not passed!!!!!!!!!!!!!"
