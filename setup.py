@@ -107,6 +107,8 @@ ext_modules = []
 
 extras = {}
 
+print("Argument list = ", str(sys.argv))
+
 if "--cpp_ext" in sys.argv or "--cuda_ext" in sys.argv:
     if TORCH_MAJOR == 0:
         raise RuntimeError(
