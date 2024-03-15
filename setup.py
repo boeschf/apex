@@ -116,6 +116,11 @@ if "--cpp_ext" in sys.argv or "--cuda_ext" in sys.argv:
 if "--cpp_ext" in sys.argv:
     sys.argv.remove("--cpp_ext")
     ext_modules.append(CppExtension("apex_C", ["csrc/flatten_unflatten.cpp"]))
+else:
+    raise RuntimeError(
+        "--cpp_ext is not passed!!!!!!!!!!!!!"
+    )
+
 
 
 # Set up macros for forward/backward compatibility hack around
