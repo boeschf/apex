@@ -118,7 +118,7 @@ if True:
 
 #if "--cpp_ext" in sys.argv:
 if True:
-    sys.argv.remove("--cpp_ext")
+    #sys.argv.remove("--cpp_ext")
     ext_modules.append(CppExtension("apex_C", ["csrc/flatten_unflatten.cpp"]))
 else:
     raise RuntimeError(
@@ -147,7 +147,7 @@ _, bare_metal_version = get_cuda_bare_metal_version(CUDA_HOME)
 
 #if "--distributed_adam" in sys.argv:
 if True:
-    sys.argv.remove("--distributed_adam")
+    #sys.argv.remove("--distributed_adam")
     raise_if_cuda_home_none("--distributed_adam")
     ext_modules.append(
         CUDAExtension(
@@ -166,7 +166,7 @@ if True:
 
 #if "--distributed_lamb" in sys.argv:
 if True:
-    sys.argv.remove("--distributed_lamb")
+    #sys.argv.remove("--distributed_lamb")
     raise_if_cuda_home_none("--distributed_lamb")
     ext_modules.append(
         CUDAExtension(
@@ -185,7 +185,7 @@ if True:
 
 #if "--cuda_ext" in sys.argv:
 if True:
-    sys.argv.remove("--cuda_ext")
+    #sys.argv.remove("--cuda_ext")
     raise_if_cuda_home_none("--cuda_ext")
     check_cuda_torch_binary_vs_bare_metal(CUDA_HOME)
 
@@ -401,7 +401,7 @@ if True:
 
 #if "--permutation_search" in sys.argv:
 if True:
-    sys.argv.remove("--permutation_search")
+    #sys.argv.remove("--permutation_search")
 
     if CUDA_HOME is None:
         raise RuntimeError("--permutation_search was requested, but nvcc was not found.  Are you sure your environment has nvcc available?  If you're installing within a container from https://hub.docker.com/r/pytorch/pytorch, only images whose names contain 'devel' will provide nvcc.")
@@ -416,7 +416,7 @@ if True:
 
 #if "--bnp" in sys.argv:
 if True:
-    sys.argv.remove("--bnp")
+    #sys.argv.remove("--bnp")
     raise_if_cuda_home_none("--bnp")
     ext_modules.append(
         CUDAExtension(
@@ -443,7 +443,7 @@ if True:
 #if "--xentropy" in sys.argv:
 if True:
     from datetime import datetime
-    sys.argv.remove("--xentropy")
+    #sys.argv.remove("--xentropy")
     raise_if_cuda_home_none("--xentropy")
     xentropy_ver = datetime.today().strftime("%y.%m.%d")
     print(f"`--xentropy` setting version of {xentropy_ver}")
@@ -461,7 +461,7 @@ if True:
 
 #if "--focal_loss" in sys.argv:
 if True:
-    sys.argv.remove("--focal_loss")
+    #sys.argv.remove("--focal_loss")
     raise_if_cuda_home_none("--focal_loss")
     ext_modules.append(
         CUDAExtension(
@@ -480,7 +480,7 @@ if True:
 
 #if "--group_norm" in sys.argv:
 if True:
-    sys.argv.remove("--group_norm")
+    #sys.argv.remove("--group_norm")
     raise_if_cuda_home_none("--group_norm")
 
     # CUDA group norm supports from SM70
@@ -509,7 +509,7 @@ if True:
 
 #if "--index_mul_2d" in sys.argv:
 if True:
-    sys.argv.remove("--index_mul_2d")
+    #sys.argv.remove("--index_mul_2d")
     raise_if_cuda_home_none("--index_mul_2d")
     ext_modules.append(
         CUDAExtension(
@@ -527,7 +527,7 @@ if True:
     )
 
 if "--deprecated_fused_adam" in sys.argv:
-    sys.argv.remove("--deprecated_fused_adam")
+    #sys.argv.remove("--deprecated_fused_adam")
     raise_if_cuda_home_none("--deprecated_fused_adam")
     ext_modules.append(
         CUDAExtension(
@@ -545,7 +545,7 @@ if "--deprecated_fused_adam" in sys.argv:
     )
 
 if "--deprecated_fused_lamb" in sys.argv:
-    sys.argv.remove("--deprecated_fused_lamb")
+    #sys.argv.remove("--deprecated_fused_lamb")
     raise_if_cuda_home_none("--deprecated_fused_lamb")
     ext_modules.append(
         CUDAExtension(
@@ -572,7 +572,7 @@ if os.path.exists(os.path.join(torch_dir, "include", "ATen", "CUDAGeneratorImpl.
 
 #if "--fast_layer_norm" in sys.argv:
 if True:
-    sys.argv.remove("--fast_layer_norm")
+    #sys.argv.remove("--fast_layer_norm")
     raise_if_cuda_home_none("--fast_layer_norm")
 
     cc_flag = []
@@ -616,7 +616,7 @@ if True:
 
 #if "--fmha" in sys.argv:
 if True:
-    sys.argv.remove("--fmha")
+    #sys.argv.remove("--fmha")
     raise_if_cuda_home_none("--fmha")
 
     if bare_metal_version < Version("11.0"):
@@ -666,7 +666,7 @@ if True:
 
 #if "--fast_multihead_attn" in sys.argv:
 if True:
-    sys.argv.remove("--fast_multihead_attn")
+    #sys.argv.remove("--fast_multihead_attn")
     raise_if_cuda_home_none("--fast_multihead_attn")
 
     cc_flag = []
@@ -721,7 +721,7 @@ if True:
 
 #if "--transducer" in sys.argv:
 if True:
-    sys.argv.remove("--transducer")
+    #sys.argv.remove("--transducer")
     raise_if_cuda_home_none("--transducer")
     ext_modules.append(
         CUDAExtension(
@@ -754,7 +754,7 @@ if True:
 
 #if "--cudnn_gbn" in sys.argv:
 if True:
-    sys.argv.remove("--cudnn_gbn")
+    #sys.argv.remove("--cudnn_gbn")
     raise_if_cuda_home_none("--cudnn_gbn")
     if check_cudnn_version_and_warn("--cudnn_gbn", 8500):
         subprocess.run(["git", "submodule", "update", "--init", "apex/contrib/csrc/cudnn-frontend/"])
@@ -772,7 +772,7 @@ if True:
 
 #if "--peer_memory" in sys.argv:
 if True:
-    sys.argv.remove("--peer_memory")
+    #sys.argv.remove("--peer_memory")
     raise_if_cuda_home_none("--peer_memory")
     ext_modules.append(
         CUDAExtension(
@@ -788,7 +788,7 @@ if True:
 # NOTE: Requires NCCL >= 2.10.3
 #if "--nccl_p2p" in sys.argv:
 if True:
-    sys.argv.remove("--nccl_p2p")
+    #sys.argv.remove("--nccl_p2p")
     raise_if_cuda_home_none("--nccl_p2p")
     # Check NCCL version.
     _nccl_version_getter = load(
@@ -816,7 +816,7 @@ if True:
 # note (mkozuki): Now `--fast_bottleneck` option (i.e. apex/contrib/bottleneck) depends on `--peer_memory` and `--nccl_p2p`.
 #if "--fast_bottleneck" in sys.argv:
 if True:
-    sys.argv.remove("--fast_bottleneck")
+    #sys.argv.remove("--fast_bottleneck")
     raise_if_cuda_home_none("--fast_bottleneck")
     if check_cudnn_version_and_warn("--fast_bottleneck", 8400):
         subprocess.run(["git", "submodule", "update", "--init", "apex/contrib/csrc/cudnn-frontend/"])
@@ -832,7 +832,7 @@ if True:
 
 #if "--fused_conv_bias_relu" in sys.argv:
 if True:
-    sys.argv.remove("--fused_conv_bias_relu")
+    #sys.argv.remove("--fused_conv_bias_relu")
     raise_if_cuda_home_none("--fused_conv_bias_relu")
     if check_cudnn_version_and_warn("--fused_conv_bias_relu", 8400):
         subprocess.run(["git", "submodule", "update", "--init", "apex/contrib/csrc/cudnn-frontend/"])
@@ -848,7 +848,7 @@ if True:
 
 #if "--gpu_direct_storage" in sys.argv:
 if True:
-    sys.argv.remove("--gpu_direct_storage")
+    #sys.argv.remove("--gpu_direct_storage")
     raise_if_cuda_home_none("--gpu_direct_storage")
     ext_modules.append(
         CUDAExtension(
